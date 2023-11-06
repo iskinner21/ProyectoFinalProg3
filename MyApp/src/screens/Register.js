@@ -56,9 +56,9 @@ register(email, password, user, bio, image){
 //Agregar estilos//
 render(){
     return(
-        <View>
+        <View style={styles.formContainer}>
             <Text>{this.state.errors}</Text> 
-            <TextInput
+            <TextInput  style={styles.input}
             placeholder = "Email"
             keyboardType="email-adress"
             onChangeText = {
@@ -68,7 +68,7 @@ render(){
             }
             value= {this.state.email}
             />
-            <TextInput
+            <TextInput  style={styles.input}
             placeholder = "Nombre de usuario"
             keyboardType="default"
             onChangeText = {
@@ -78,7 +78,7 @@ render(){
             }
             value= {this.state.usuario}
             />
-            <TextInput
+            <TextInput  style={styles.input}
             placeholder = "Contraseña"
             keyboardType="default"
             onChangeText = {
@@ -88,7 +88,7 @@ render(){
             }
             value= {this.state.password}
             />
-            <TextInput
+            <TextInput  style={styles.input}
             placeholder = "Mini bio"
             keyboardType="default"
             onChangeText = {
@@ -98,7 +98,7 @@ render(){
             }
             value= {this.state.bio}
             />
-            <TextInput
+            <TextInput  style={styles.input}
             placeholder = "Subi una foto"
             keyboardType="default"
             onChangeText = {
@@ -120,7 +120,7 @@ render(){
 </TouchableOpacity>
 
 }
-        <Text onPress={()=> this.props.navigation.navigate("Login")}></Text>
+        <Text style={styles.loginbutton} onPress={()=> this.props.navigation.navigate("Login")}>Ya tenes cuenta? Logueate aca</Text>
         </View>
 
 
@@ -132,6 +132,55 @@ render(){
 
 
 const styles = StyleSheet.create({
+
+    formContainer:{
+        paddingHorizontal:10,
+        marginTop: 20,
+    },
+    input:{
+        height:20,
+        paddingVertical:15,
+        paddingHorizontal: 10,
+        borderWidth:1,
+        borderColor: '#ccc',
+        borderStyle: 'solid',
+        borderRadius: 6,
+        marginVertical:10,
+    },
+    button:{
+        backgroundColor:'#28a745',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: '#28a745'
+    },
+    botonerror:{
+        backgroundColor:'red',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+    },
+    botonfunciona:{
+        backgroundColor:'green',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: '#28a745'
+    },
+    loginbutton:{
+        paddingHorizontal: 10,
+        paddingVertical: 15,
+        textAlign: 'center',
+        marginVertical: 10,
+    },
 
 })
 

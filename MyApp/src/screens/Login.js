@@ -37,9 +37,10 @@ class Login extends Component {
 //Agregar estilos//
 render(){
     return(
-        <View>
+        <View style={styles.formContainer}>
             <Text>{this.state.errors}</Text> 
             <TextInput
+            style={styles.input}
             placeholder = "Email"
             keyboardType="email-adress"
             onChangeText = {
@@ -50,6 +51,7 @@ render(){
             value= {this.state.email}
             />
             <TextInput
+            style={styles.input}
             placeholder = "Contraseña"
             keyboardType="default"
             onChangeText = {
@@ -63,8 +65,8 @@ render(){
             
 {
     this.state.email == "" || this.state.password =="" ?
-    <TouchableOpacity>
-        <Text style={styles.botonerror}>Loguaerme</Text>
+    <TouchableOpacity >
+        <Text style={styles.botonerror}>Loguearme</Text>
     </TouchableOpacity>
     :
     <TouchableOpacity onPress={()=> this.loguear(this.state.email, this.state.password)}>
@@ -72,7 +74,7 @@ render(){
 </TouchableOpacity>
 
 }
-        <Text onPress={()=> this.props.navigation.navigate("Register")}></Text>
+        <Text style={styles.registerbutton} onPress={()=> this.props.navigation.navigate("Register")}>No tenes cuenta? Registrate aca</Text>
         </View>
 
 
@@ -84,6 +86,57 @@ render(){
 
 
 const styles = StyleSheet.create({
+    formContainer:{
+        paddingHorizontal:10,
+        marginTop: 20,
+    },
+    input:{
+        height:20,
+        paddingVertical:15,
+        paddingHorizontal: 10,
+        borderWidth:1,
+        borderColor: '#ccc',
+        borderStyle: 'solid',
+        borderRadius: 6,
+        marginVertical:10,
+    },
+    button:{
+        backgroundColor:'#28a745',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: '#28a745'
+    },
+    botonerror:{
+        backgroundColor:'red',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: '#28a745'
+    },
+    botonfunciona:{
+        backgroundColor:'green',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
+        textAlign: 'center',
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: '#28a745'
+    },
+    registerbutton:{
+        paddingHorizontal: 10,
+        paddingVertical: 15,
+        textAlign: 'center',
+        marginVertical: 10,
+       
+    },
 
 })
 
