@@ -25,7 +25,7 @@ componentDidMount(){
         auth.onAuthStateChanged(
         usuario => {
             if (usuario){
-                this.props.navigation.navigate("Home")
+                this.props.navigation.navigate("Menu")
             }
         })
     }
