@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import {auth, db} from "../firebase/config"
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, Image} from "react-native"
-
-//Despues vamos a tener que integrar la camara, pero ncomo no está todavia, no lo ponemos//
+import { Camera } from 'expo-camera'
 
 //Lo primero que hacemos es crear el componente con estado
 
@@ -20,6 +19,15 @@ class Register extends Component {
             foto: "",
             errors: "", //Este es para decirle el error por el cual el usuario no se ppudo registrar//
         }
+    }
+
+componentDidMount(){ 
+        auth.onAuthStateChanged(
+        usuario => {
+            if (usuario){
+                this.props.navigation.navigate("Home")
+            }
+        })
     }
 
     //Funcionalidad para poder registrarme y que se guarde en el firebase
@@ -87,9 +95,10 @@ render(){
                 })
             }
             value= {this.state.password}
+            secureTextEntry={true}
             />
             <TextInput  style={styles.input}
-            placeholder = "Mini bio"
+            placeholder = "Tu descripcion en pocas palabras"
             keyboardType="default"
             onChangeText = {
                 text =>this.setState({
@@ -116,11 +125,11 @@ render(){
     </TouchableOpacity>
     :
     <TouchableOpacity onPress={()=> this.register(this.state.email, this.state.password, this.state.usuario, this.state.bio, this.state.foto)}>
-    <Text style={styles.botonfunciona}>Registrarme</Text>
+    <Text style={styles.botonfunciona}>Goooooool!</Text>
 </TouchableOpacity>
 
 }
-        <Text style={styles.loginbutton} onPress={()=> this.props.navigation.navigate("Login")}>Ya tenes cuenta? Logueate aca</Text>
+        <Text style={styles.loginbutton} onPress={()=> this.props.navigation.navigate("Login")}>¿Ya tenes cuenta? Logueate aca</Text>
         </View>
 
 

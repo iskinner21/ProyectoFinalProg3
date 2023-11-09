@@ -60,6 +60,7 @@ render(){
                 })
             }
             value= {this.state.password}
+            secureTextEntry={true}
             />
             
             
@@ -74,7 +75,7 @@ render(){
 </TouchableOpacity>
 
 }
-        <Text style={styles.registerbutton} onPress={()=> this.props.navigation.navigate("Register")}>No tenes cuenta? Registrate aca</Text>
+        <Text style={styles.registerbutton} onPress={()=> this.props.navigation.navigate("Register")}>¿No tenes cuenta? Registrate aca</Text>
         </View>
 
 
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: 'black'
     },
     botonfunciona:{
         backgroundColor:'green',
