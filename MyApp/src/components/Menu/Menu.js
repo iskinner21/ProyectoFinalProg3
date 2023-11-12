@@ -15,11 +15,10 @@ function Menu (){
 
     return(
         <Tab.Navigator>
-            <Tab.Screen name='Home' component={Home}  options={{ tabBarIcon: () => <AntDesign name='home' color='black' size={24} /> }} /> 
-            <Tab.Screen name='New Post' component={PostForm}  options={{headerShown: false, tabBarIcon: () => <AntDesign name="plus" color="black" size={24} /> }}/> 
-            <Tab.Screen name='Buscador' component={Buscador} options={{headerShown: false, tabBarIcon: () => <FontAwesome name='search' size={24} color='black' />}}/> 
-            <Tab.Screen name='Profile' component={Profile}  options={{ tabBarIcon: () => <AntDesign name="user" color="black" size={24} /> }}/>
-                       
+            <Tab.Screen name='HOME' component={Home}  options={{ tabBarIcon: () => <AntDesign name='home' color='black' size={24} /> }} /> 
+            <Tab.Screen name='POST ' component={PostForm}  options={{headerShown: false, tabBarIcon: () => <AntDesign name="plus" color="black" size={24} /> }}/> 
+            <Tab.Screen name='SEARCH ' component={Buscador} options={{headerShown: false, tabBarIcon: () => <FontAwesome name='search' size={24} color='black' />}}/> 
+            <Tab.Screen name='PROFILE ' component={Profile}  options={{ tabBarIcon: () => <AntDesign name="user" color="black" size={24} /> }}/>
         </Tab.Navigator>
     )
     
