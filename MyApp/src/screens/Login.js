@@ -37,7 +37,11 @@ class Login extends Component {
 //Agregar estilos//
 render(){
     return(
+        <>
+        <Image source={require('../../assets/logoLPF.jpg')} style={styles.image}/>
         <View style={styles.formContainer}>
+            
+            <Text style={styles.bienvenida}>¡Bienvenido a la red social de La Liga Profesional Argentina!</Text>
             <Text>{this.state.errors}</Text> 
             <TextInput
             style={styles.input}
@@ -71,13 +75,13 @@ render(){
     </TouchableOpacity>
     :
     <TouchableOpacity onPress={()=> this.loguear(this.state.email, this.state.password)}>
-    <Text style={styles.botonfunciona}>Loguaerme</Text>
+    <Text style={styles.botonfunciona}>Goooooool!!</Text>
 </TouchableOpacity>
 
 }
         <Text style={styles.registerbutton} onPress={()=> this.props.navigation.navigate("Register")}>¿No tenes cuenta? Registrate aca</Text>
         </View>
-
+        </>
 
 
     )
@@ -90,6 +94,21 @@ const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal:10,
         marginTop: 20,
+    },
+    image:{
+        height: 200,
+        width: 150,
+        position: 'relative',
+        marginTop: 10,
+        marginBottom: 5,
+        alignSelf: 'center'
+
+    },
+    bienvenida:{
+        textAlign: 'center',
+        fontFamily: 'arial',
+        fontSize: 20,
+
     },
     input:{
         height:20,

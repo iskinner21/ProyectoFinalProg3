@@ -22,8 +22,8 @@ class Register extends Component {
     }
 
 componentDidMount(){ 
-        auth.onAuthStateChanged(
-        usuario => {
+           auth.onAuthStateChanged(
+            usuario => {
             if (usuario){
                 this.props.navigation.navigate("Menu")
             }
@@ -64,7 +64,12 @@ register(email, password, user, bio, image){
 //Agregar estilos//
 render(){
     return(
+       <>
+       <Image style={styles.image} source={require('../../assets/logoLPF.jpg')} />
+            
         <View style={styles.formContainer}>
+            
+            <Text style={styles.bienvenida}>¡Bienvenido a la red social de La Liga Profesional Argentina!</Text>
             <Text>{this.state.errors}</Text> 
             <TextInput  style={styles.input}
             placeholder = "Email"
@@ -77,7 +82,7 @@ render(){
             value= {this.state.email}
             />
             <TextInput  style={styles.input}
-            placeholder = "Nombre de usuario"
+            placeholder = "Nombre de equipo"
             keyboardType="default"
             onChangeText = {
                 text =>this.setState({
@@ -98,7 +103,7 @@ render(){
             secureTextEntry={true}
             />
             <TextInput  style={styles.input}
-            placeholder = "Tu descripcion en pocas palabras"
+            placeholder = "Describi a tu equipo en pocas palabras"
             keyboardType="default"
             onChangeText = {
                 text =>this.setState({
@@ -108,7 +113,7 @@ render(){
             value= {this.state.bio}
             />
             <TextInput  style={styles.input}
-            placeholder = "Subi una foto"
+            placeholder = "Subi una foto con tu camiseta!"
             keyboardType="default"
             onChangeText = {
                 text =>this.setState({
@@ -131,7 +136,7 @@ render(){
 }
         <Text style={styles.loginbutton} onPress={()=> this.props.navigation.navigate("Login")}>¿Ya tenes cuenta? Logueate aca</Text>
         </View>
-
+       </>
 
 
     )
@@ -145,6 +150,21 @@ const styles = StyleSheet.create({
     formContainer:{
         paddingHorizontal:10,
         marginTop: 20,
+    },
+    image:{
+        height: 200,
+        width: 150,
+        position: 'relative',
+        marginTop: 10,
+        marginBottom: 5,
+        alignSelf: 'center'
+
+    },
+    bienvenida:{
+        textAlign: 'center',
+        fontFamily: 'arial',
+        fontSize: 20,
+
     },
     input:{
         height:20,

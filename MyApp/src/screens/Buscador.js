@@ -61,7 +61,7 @@ filtrador(texto){
 
 //Ir a perfil//
 
-//Basicamente tiene que agarrar y hacer esto://
+//Basicamente hay que agarrar y hacer esto://
 
 // goToProfile(item){
 //     //Data.email es el mail de alguien, si coincide con currentUser.email es porque sos el dueño de ese mail!! coincide y es tu perfil
@@ -79,7 +79,7 @@ filtrador(texto){
             <View style={styles.formConteiner}>
 
                 <TextInput 
-                placeholder='Busca tu usuario'
+                placeholder='Busca tu equipo favorito!'
                 keyboardType='default'
                 onChangeText={texto => this.filtrador(texto)}
                 value= {this.state.input}
