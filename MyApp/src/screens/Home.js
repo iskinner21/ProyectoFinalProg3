@@ -13,7 +13,7 @@ class Home extends Component{
     }
 
     componentDidMount() {
-        db.collection("posteos").orderBy("CreatedAt", "desc").onSnapshot(
+        db.collection("Posts").orderBy("createdAt", "desc").onSnapshot(
             docs => {
                 let posts = [];
                 docs.forEach (doc =>{
@@ -27,18 +27,18 @@ class Home extends Component{
                 })
             }
         )
-            }
+    }
 
+    
 
     render(){
-        
+        console.log(this.state.posteos)
         return(
-       
             <View style={styles.view}> 
             <FlatList
             data = {this.state.posteos}
             keyExtractor= {UnPost => UnPost.id.toString()}
-            renderItem = {({ item}) => <Posteos posteoData={item} navigation={this.props.navigation}/> }
+            renderItem = {({ item}) => <Posteos postData={item} navigation={this.props.navigation}/> }
             />
             </View>
     )
