@@ -17,8 +17,8 @@ class Profile extends Component{
             docs => {
                 docs.forEach(doc => {
                     const data = doc.data();
-                    console.log(data);
-                    if(data.owner == auth.currentUser.email){
+                    console.log("t",data);
+                    if(data.user == auth.currentUser.email){
                         this.setState({
                             datosUser: data
                         })

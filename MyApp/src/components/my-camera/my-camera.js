@@ -10,10 +10,7 @@ class MyCamera extends Component{
             permissions: false,
             showCamera: true,
             foto: ''
-        }
-        
-        this.metodosDeCamara = ''
-    }
+        }    }
 
     componentDidMount(){
         Camera.requestCameraPermissionsAsync()
@@ -45,9 +42,6 @@ class MyCamera extends Component{
                         refStorage.getDownloadURL() //la url pública de firebase.
                         .then( url => this.props.onImageUpload(url))
                     })
-                this.setState({
-                    showCamera: false
-                })
             })
             .catch(e => console.log(e))
     }
@@ -83,7 +77,7 @@ class MyCamera extends Component{
                             <Text>Sacar foto</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.button1} onPress={()=>this.cancelar()}>
-                            <Text>cancelar</Text>
+                            <Text>Cancelar</Text>
                         </TouchableOpacity>
                     </View>
                     :

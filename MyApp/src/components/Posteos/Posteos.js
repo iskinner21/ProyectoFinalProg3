@@ -80,6 +80,7 @@ class Posteos extends Component {
                         <Text style={styles.thing}>by: <Text style ={styles.user}>{this.props.postData.data.owner}</Text></Text>
                     </TouchableOpacity>
                }
+               <Text>Creado el: {this.props.postData.data.createdAt}</Text>
                 <Image 
                     style={styles.photo}
                     source={{uri: this.props.postData.data.photo}}
@@ -108,7 +109,7 @@ class Posteos extends Component {
                 <TouchableOpacity 
                 onPress={() => this.props.navigation.navigate('Comentarios', {id: this.props.postData.id})}
                 >
-                    <Text style={styles.thing}><FontAwesome name='comment' size={17} color='grey'/>Comentar este mensaje</Text>
+                    <Text style={styles.thing}><FontAwesome name='comment' size={17} color='grey'/>Comentarios</Text>
                 </TouchableOpacity>
 
                 </View>
