@@ -61,25 +61,30 @@ class Comentarios extends Component {
     
     render(){
         return (
+            
           <View>
-                <TouchableOpacity style={styles.thing} onPress={ ()=> {this.props.navigation.navigate('HOME')} }>
+            <TouchableOpacity style={styles.thing} onPress={ ()=> {this.props.navigation.navigate('HOME')} }>
                      <Text style={styles.bold}> <FontAwesome name='arrow-left' size={17} color='blue'/>{this.state.cantidadDeLikes} <Text style={styles.bold}>Volver</Text></Text>
                 </TouchableOpacity>
-            <FlatList
-            data={this.state.comentarios}
-            keyExtractor={( item ) => item.createdAt.toString()}
-            renderItem={ ( {item} ) => <View style={styles.comment}>
-                <Text>{item.owner}</Text>
-                <Text>{item.description}</Text>
-                <TouchableOpacity 
-                onPress={()=>this.deleteComment(item.createdAt)}
-                style={styles.btnComment}
-                >
-                    <Text>Borrar</Text>
-                </TouchableOpacity>
-            </View>
-        }
-            />
+            {
+                this.state.comentarios.length < 1
+                ? <Text>No hay comentarios por ahora</Text>
+                : <FlatList
+                data={this.state.comentarios}
+                keyExtractor={( item ) => item.createdAt.toString()}
+                renderItem={ ( {item} ) => <View style={styles.comment}>
+                    <Text>{item.owner}</Text>
+                    <Text>{item.description}</Text>
+                    <TouchableOpacity 
+                    onPress={()=>this.deleteComment(item.createdAt)}
+                    style={styles.btnComment}
+                    >
+                        <Text>Borrar</Text>
+                    </TouchableOpacity>
+                </View>}
+                />
+
+            }
             <View>
                 <TextInput
                     placeholder='comment'

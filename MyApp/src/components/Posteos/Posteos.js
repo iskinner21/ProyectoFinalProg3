@@ -76,7 +76,7 @@ class Posteos extends Component {
             <View> 
                 {auth.currentUser.email == this.props.postData.data.owner
                    ?<TouchableOpacity onPress={() => this.props.navigation.navigate('Profile',{user:this.props.postData.data.owner})}><Text style={styles.thing}>by:<Text style ={styles.user}> {this.props.postData.data.owner}</Text></Text></TouchableOpacity>
-                   : <TouchableOpacity onPress={() => this.props.navigation.navigate("Perfiles",{user:this.props.postData.data.owner})}>
+                   : <TouchableOpacity onPress={() => this.props.navigation.navigate("ProfileFriend",{user:this.props.postData.data.owner})}>
                         <Text style={styles.thing}>by: <Text style ={styles.user}>{this.props.postData.data.owner}</Text></Text>
                     </TouchableOpacity>
                }

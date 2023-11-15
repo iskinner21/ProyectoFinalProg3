@@ -5,7 +5,8 @@ import Register from './src/screens/Register';
 import Login from './src/screens/Login';
 import Menu from './src/components/Menu/Menu';
 import Comentarios from './src/screens/Comentarios';
-
+import Profile from './src/screens/Profile';
+import ProfileFriend from './src/screens/ProfileFriend';
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Stack.Screen name= 'Login' component={Login} options= {{ headerShown : false}}/>
         <Stack.Screen name='Menu' component={Menu} options={ { headerShown: false } }/>
         <Stack.Screen name="Comentarios" component={ Comentarios } options= {{headerShown: false}}/>
+        <Stack.Screen name="ProfileFriend" component={ ProfileFriend } options= {{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
