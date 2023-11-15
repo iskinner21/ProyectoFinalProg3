@@ -53,7 +53,7 @@ class Home extends Component{
 const styles = StyleSheet.create({
     view: {
         flex:1,
-        backgroundColor: "rgb(51, 209, 255)"
+        backgroundColor: ""
     }
 })
 

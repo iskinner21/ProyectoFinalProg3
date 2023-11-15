@@ -58,7 +58,7 @@ class Profile extends Component{
                 <TouchableOpacity onPress={ ()=> this.Logout()} >
                     <Text style={styles.log}>Logout</Text>
                 </TouchableOpacity>
-                <Text>Tus posts: {auth.currentUser.email}</Text>
+                <Text>Tus posts: {auth.currentUser.user}</Text>
                 <FlatList 
                     data={this.state.posteos}//renderizamos posteos que seteamos en el estado anterior
                     keyExtractor={item=>item.id.toString()}
