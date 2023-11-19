@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'lightgrey',
         height: 20,
         width: '20%',
-        margin:20,
+        margin:120,
         borderRadius: 20,
         textAlign: 'center',
         alignContent: 'bottom'
