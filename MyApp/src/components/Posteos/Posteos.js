@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, StyleSheet, Image, TextInput, FlatList } from 'react-native';
+import { Text, View, TouchableOpacity, StyleSheet, Image, Button, Alert } from 'react-native';
 import {auth, db} from '../../firebase/config';
 import firebase from 'firebase';
 import { FontAwesome } from "@expo/vector-icons"
@@ -53,9 +53,7 @@ class Posteos extends Component {
         )
         .catch(e=>console.log(e))
     }
-
-  
-
+    
     borrarFoto(){
         if(auth.currentUser.email == this.props.postData.data.owner){
             db.collection('Posts')
@@ -63,7 +61,7 @@ class Posteos extends Component {
         .delete({
         })
         .then(()=> {
-            console.log('Documento borrado')
+            alert('Documento borrado')
             this.props.navigation.navigate('Home')
             location.reload(true)
         })
@@ -73,6 +71,7 @@ class Posteos extends Component {
 
     render(){;
         return(
+            console.log('PostData', this.props.postData),
             <View> 
                 {auth.currentUser.email == this.props.postData.data.owner
                    ?<TouchableOpacity onPress={() => this.props.navigation.navigate('Profile',{user:this.props.postData.data.owner})}><Text style={styles.thing}>by:<Text style ={styles.user}> {this.props.postData.data.owner}</Text></Text></TouchableOpacity>
@@ -100,7 +99,7 @@ class Posteos extends Component {
                     
                 }
                    {auth.currentUser.email == this.props.postData.data.owner
-                ?<TouchableOpacity onPress={ ()=> this.borrarFoto() }>
+                ?<TouchableOpacity onPress={ ()=> window.confirm('¿Seguro que quieres borrar este post?') && this.borrarFoto() }>
                     <Text style={styles.thing}><FontAwesome name='trash' size={17} color='tomato'/> Borrar Post</Text>
                     </TouchableOpacity>
                 : <Text></Text> 

@@ -68,9 +68,9 @@ goToProfile(item){
      if(item.data.email === auth.currentUser.email){
          this.props.navigation.navigate("Profile")
         } 
-//     //Aca si caigo en else, es porque no me pertenece ese posteo o lo quera fuera//
+//     //Aca si caigo en else, es porque no me pertenece o lo quera fuera//
          else{
-         this.props.navigation.navigate("ProfileFriend", {user:this.state.resultados.data.user})//ACA CAMBIAR POR PERFILES DE OTROS
+         this.props.navigation.navigate("ProfileFriend", {user:item.data.email})//ACA CAMBIAR POR PERFILES DE OTROS
         }
     }
 
