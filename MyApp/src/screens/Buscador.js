@@ -64,6 +64,7 @@ filtrador(texto){
 //Basicamente hay que agarrar y hacer esto://
 
  goToProfile(item){
+<<<<<<< HEAD
 //     //Data.email es el mail de alguien, si coincide con currentUser.email es porque sos el dueño de ese mail!! coincide y es tu perfil
      if(item.data.email === auth.currentUser.email){
          this.props.navigation.navigate("Profile")
@@ -73,6 +74,17 @@ filtrador(texto){
          this.props.navigation.navigate("ProfileFriend", {user:this.state.usuarios.data.user})//ACA CAMBIAR POR PERFILES DE OTROS
         }
     }
+=======
+     //Data.email es el mail de alguien, si coincide con currentUser.email es porque sos el dueño de ese mail!! coincide y es tu perfil
+     if(item.data.email === auth.currentUser.email){
+         this.props.navigation.navigate("Profile")
+     } 
+     //Aca si caigo en else, es porque no me pertenece ese posteo o lo quera fuera//
+     else{
+         this.props.navigation.navigate("Profile")//ACA CAMBIAR POR PERFILES DE OTROS
+     }
+ }
+>>>>>>> 7197c48de04d866a802273d292569b7ba033f834
 
     render(){
         console.log('buscador',this.state.usuarios)

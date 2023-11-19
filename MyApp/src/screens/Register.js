@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {auth, db} from "../firebase/config"
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, Image} from "react-native"
-import { Camera } from 'expo-camera'
+import MyCamera from "../components/my-camera/my-camera";
 
 //Lo primero que hacemos es crear el componente con estado
 
@@ -17,6 +17,8 @@ class Register extends Component {
             usuario: "",
             bio: "",
             foto: "",
+            mostrarCamara: false,
+            permisos: true,
             errors: "", //Este es para decirle el error por el cual el usuario no se ppudo registrar//
         }
     }
@@ -30,6 +32,12 @@ componentDidMount(){
         })
     }
 
+onImageUpload(url) {
+        this.setState({
+            foto: url,
+            mostrarCamara: false,
+        })
+    }
     //Funcionalidad para poder registrarme y que se guarde en el firebase
 
 register(email, password, user, bio, image){
@@ -112,16 +120,16 @@ render(){
             }
             value= {this.state.bio}
             />
-            <TextInput  style={styles.input}
-            placeholder = "Subi una foto con tu camiseta!"
-            keyboardType="default"
-            onChangeText = {
-                text =>this.setState({
-                    foto: text
-                })
-            }
-            value= {this.state.foto}
-            />
+            {this.state.mostrarCamara ?
+                    <View style={styles.fotoPerfil}>
+                        <MyCamera onImageUpload={url => this.onImageUpload(url)} />
+                    </View>
+                    :
+                    <TouchableOpacity style={styles.input} onPress={() => this.setState({ mostrarCamara: true })}>
+                        <Text >Subi una foto con tu camiseta!</Text>
+                    </TouchableOpacity>
+                }
+
             
 {
     this.state.email == "" || this.state.password =="" ||this.state.usuario==""?
@@ -175,6 +183,10 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderRadius: 6,
         marginVertical:10,
+    },
+    fotoPerfil:{ 
+        heigth: 400 ,
+
     },
     button:{
         backgroundColor:'#28a745',
