@@ -49,7 +49,7 @@ filtrador(texto){
         //Darle los resultados del que esta buscando
         let filtrador = this.state.usuarios.filter((usuario) => usuario.data.email.toLowerCase().includes(texto.toLowerCase()))
         this.setState({
-            resultado: filtrador, 
+            resultados: filtrador, 
             input: texto,
             buscando: true
         })
@@ -63,18 +63,20 @@ filtrador(texto){
 
 //Basicamente hay que agarrar y hacer esto://
 
-// goToProfile(item){
+ goToProfile(item){
 //     //Data.email es el mail de alguien, si coincide con currentUser.email es porque sos el dueño de ese mail!! coincide y es tu perfil
-//     if(item.data.email === auth.currentUser.email){
-//         this.props.navigation.navigate("Profile")
-//     } 
+     if(item.data.email === auth.currentUser.email){
+         this.props.navigation.navigate("Profile")
+        } 
 //     //Aca si caigo en else, es porque no me pertenece ese posteo o lo quera fuera//
-//     else{
-//         this.props.navigation.navigate("Profile")//ACA CAMBIAR POR PERFILES DE OTROS
-//     }
-// }
+         else{
+         this.props.navigation.navigate("ProfileFriend", {user:this.state.usuarios.data.user})//ACA CAMBIAR POR PERFILES DE OTROS
+        }
+    }
 
     render(){
+        console.log('buscador',this.state.usuarios)
+        console.log('resultados',this.state.resultados)
         return(
             <View style={styles.formConteiner}>
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList} from 'react-native';
 import { auth, db } from "../firebase/config";
 import Post from '../components/Posteos/Posteos';
+import Posteos from '../components/Posteos/Posteos';
 
 class Profile extends Component{
     constructor(props){
@@ -61,8 +62,8 @@ class Profile extends Component{
                 <Text>Tus {this.state.posteos.length} posts: {auth.currentUser.email}</Text>
                 <FlatList 
                     data={this.state.posteos}
-                    keyExtractor={item=>item.id.toString()}
-                    renderItem={({item}) => <Post postData={item} navigation={this.props.navigation}/> }
+                    keyExtractor={item=>item.id}
+                    renderItem={({item}) => <Posteos postData={item} navigation={this.props.navigation}/> }
                 />
             </View>
 

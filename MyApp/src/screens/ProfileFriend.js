@@ -59,7 +59,7 @@ class ProfileFriend extends Component {
                 <Text>Los {this.state.posteos.length} posts de: {this.state.datosUser.owner}</Text>
                 <FlatList 
                     data={this.state.posteos}
-                    keyExtractor={item=>item.id.toString()}
+                    keyExtractor={(item) => item.id}
                     renderItem={({item}) => <Posteos postData={item} navigation={this.props.navigation}/> }  
                 />
             </View>
