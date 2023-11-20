@@ -70,7 +70,7 @@ goToProfile(item){
         } 
 //     //Aca si caigo en else, es porque no me pertenece ese posteo o lo quera fuera//
          else{
-         this.props.navigation.navigate("ProfileFriend", {user:this.state.resultados.data.user})//ACA CAMBIAR POR PERFILES DE OTROS
+         this.props.navigation.navigate("ProfileFriend", {user:this.state.resultados.data})//ACA CAMBIAR POR PERFILES DE OTROS
         }
     }
 
