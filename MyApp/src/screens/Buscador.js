@@ -13,10 +13,7 @@ class Buscador extends Component{
         }
     }
 
-//Asi lo entiende firebase: 
-//Si a la tabla le decimos Coleccion
-//A cada uno de los "usuarios" le decis "documento"
-//Nos guardamos la informacion de todos los usuarios en info, y despues lo pasamos al state
+
     componentDidMount() {
 db.collection("users").onSnapshot(
     docs => {
@@ -37,40 +34,41 @@ db.collection("users").onSnapshot(
 //Filtrador//
 //Vaya buscando palabra por palabra y encontrar los datos que coincidan con la palabra. De usuarios//
 
-filtrador(texto){
-    //Si el texto esta vacio, no le muestro nada
-    if(texto ===""){
+filtrador(texto) {
+    if (texto === "") {
         this.setState({
             resultados: [],
-            input:"",
+            input: "",
             buscando: false
-        })
-    }else{
-        //Darle los resultados del que esta buscando
-        let filtrador = this.state.usuarios.filter((usuario) => usuario.data.email.toLowerCase().includes(texto.toLowerCase()))
+        });
+    } else {
+        let filtrador = this.state.usuarios.filter((usuario) => {
+            const emailEncontrado = usuario.data.email && usuario.data.email.toLowerCase().includes(texto.toLowerCase());
+            const usuarioEncontrado = usuario.data.usuario && usuario.data.usuario.toLowerCase().includes(texto.toLowerCase());
+            
+            // Utilizando un operador OR (||) para buscar por email o usuario
+            return emailEncontrado || usuarioEncontrado;
+        });
+
         this.setState({
             resultados: filtrador, 
             input: texto,
             buscando: true
-        })
+        });
     }
 }
 
 
 
 
-//Ir a perfil//
 
-//Basicamente hay que agarrar y hacer esto://
 
-goToProfile(item){
-//     //Data.email es el mail de alguien, si coincide con currentUser.email es porque sos el dueño de ese mail!! coincide y es tu perfil
+goToProfile(item){   
      if(item.data.email === auth.currentUser.email){
          this.props.navigation.navigate("Profile")
         } 
-//     //Aca si caigo en else, es porque no me pertenece ese posteo o lo quera fuera//
          else{
-         this.props.navigation.navigate("ProfileFriend", {user:this.state.resultados.data})//ACA CAMBIAR POR PERFILES DE OTROS
+         this.props.navigation.navigate("ProfileFriend", {user:item.data.email})
         }
     }
 

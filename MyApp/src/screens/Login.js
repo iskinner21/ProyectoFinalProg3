@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import {auth, db} from "../firebase/config"
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, Image} from "react-native"
 
-//Despues vamos a tener que integrar la camara, pero ncomo no está todavia, no lo ponemos//
 
-//Lo primero que hacemos es crear el componente con estado
+
+
 
 class Login extends Component {
     constructor(){

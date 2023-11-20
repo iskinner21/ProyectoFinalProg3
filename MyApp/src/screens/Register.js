@@ -3,13 +3,13 @@ import {auth, db} from "../firebase/config"
 import {View, Text, StyleSheet, TextInput, TouchableOpacity, Image} from "react-native"
 import MyCamera from "../components/my-camera/my-camera";
 
-//Lo primero que hacemos es crear el componente con estado
+
 
 class Register extends Component {
     constructor(){
         super()
 
-        //Aca creamos los estados iniciales
+      
 
         this.state = {
             email: "",
@@ -19,7 +19,7 @@ class Register extends Component {
             foto: "",
             mostrarCamara: false,
             permisos: true,
-            errors: "", //Este es para decirle el error por el cual el usuario no se ppudo registrar//
+            errors: "", 
         }
     }
 
@@ -69,7 +69,7 @@ register(email, password, user, bio, image){
         errors:`Tu error es: ${error.message}`
     }))
 }
-//Agregar estilos//
+
 render(){
     return(
        <>

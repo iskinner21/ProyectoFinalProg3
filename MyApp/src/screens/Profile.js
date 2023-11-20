@@ -3,6 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, StyleSheet, FlatList} from 'rea
 import { auth, db } from "../firebase/config";
 import Post from '../components/Posteos/Posteos';
 import Posteos from '../components/Posteos/Posteos';
+import { FontAwesome } from "@expo/vector-icons"
 
 class Profile extends Component{
     constructor(props){
@@ -49,11 +50,28 @@ class Profile extends Component{
         auth.signOut();
         this.props.navigation.navigate('Login');
     }
+    //<image style={styles.user}>{this.state.datosUser?.image}</image>
+
+    borrarUser() {
+        if (auth.currentUser.email === this.props.currentUser) {
+            db.collection('User')
+                .doc(this.props.email.id) 
+                .delete()
+                .then(() => {
+                    alert('Documento borrado');
+                    this.props.navigation.navigate('Register');
+                })
+                .catch(e => console.log(e));
+        }
+    }
 
     render(){
         console.log("state.DatosUser",this.state.datosUser);
         return(
             <View style={styles.container}>
+                <TouchableOpacity style={styles.thing} onPress={ ()=> {this.props.navigation.navigate('HOME')} }>
+                        <Text style={styles.bold}> <FontAwesome name='arrow-left' size={17} color='blue'/>{this.state.cantidadDeLikes} <Text style={styles.bold}>Volver a inicio</Text></Text>
+                    </TouchableOpacity>
                 <Text style={styles.user}>@{this.state.datosUser?.user}</Text>
                 <Text style={styles.bio}> Biografia: {this.state.datosUser?.bio}</Text>
                 <TouchableOpacity onPress={ ()=> this.Logout()} >
@@ -65,6 +83,9 @@ class Profile extends Component{
                     keyExtractor={item=>item.id}
                     renderItem={({item}) => <Posteos postData={item} navigation={this.props.navigation}/> }
                 />
+                <TouchableOpacity onPress={ ()=> window.confirm('¿Seguro que quieres borrar tu usuario?') && this.borrarUser() }>
+                    <Text style={styles.thing}>Eliminar Usuario</Text>
+                    </TouchableOpacity>
             </View>
 
         )
@@ -101,6 +122,10 @@ const styles = StyleSheet.create({
         fontSize: 12,
         marginTop: 3,
     },
+    thing:{
+        textAlign: 'center',
+        fontWeight: 'bold'
+    }
 }) 
 
 export default Profile;

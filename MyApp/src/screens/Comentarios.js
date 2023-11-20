@@ -46,22 +46,8 @@ class Comentarios extends Component {
 
     }
 
-    deleteComment(borrarComment){
-        db.collection('Posts').where('createdAt','==',borrarComment)
-        .onSnapshot(
-            docs => {
-              console.log('comment'+ docs);
-              docs.forEach( doc => {
-                doc.ref.delete()
-              })
-            }
-          ) 
-    
-    }
-    
     render(){
         return (
-            
           <View>
             <TouchableOpacity style={styles.thing} onPress={ ()=> {this.props.navigation.navigate('HOME')} }>
                      <Text style={styles.bold}> <FontAwesome name='arrow-left' size={17} color='blue'/>{this.state.cantidadDeLikes} <Text style={styles.bold}>Volver</Text></Text>
@@ -75,12 +61,6 @@ class Comentarios extends Component {
                 renderItem={ ( {item} ) => <View style={styles.comment}>
                     <Text>{item.owner}</Text>
                     <Text>{item.description}</Text>
-                    <TouchableOpacity 
-                    onPress={()=>this.deleteComment(item.createdAt)}
-                    style={styles.btnComment}
-                    >
-                        <Text>Borrar</Text>
-                    </TouchableOpacity>
                 </View>}
                 />
 
